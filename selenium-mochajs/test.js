@@ -17,6 +17,7 @@
 const { Builder } = require('selenium-webdriver');
 const { expect } = require('expect');
 const chrome = require('selenium-webdriver/chrome');
+const path = require('path');
 
 describe('Selenium ChromeDriver', function () {
   let driver;
