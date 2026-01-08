@@ -58,7 +58,25 @@ describe('Selenium ChromeDriver', function () {
     expect(title).toBe('Google');
   });
 
-  it('ISSUE REPRODUCTION', async function () {
+  it('Reproduction of crbug.com/369418248', async function () {
     // Add test reproducing the issue here.
+    // Repeatedly run window.open('http://[1::2]:3:4').close();
+    const indexPath = path.resolve(__dirname, 'index.html');
+
+    // 1. Navigate to the local index.html file.
+    await driver.get(`file://${indexPath}`);
+
+    // 2. Click the button to open and close a window.
+    await driver.findElement({ id: 'openWindowBtn' }).click();
+    // 3. ten times
+    await driver.findElement({ id: 'openWindowBtn' }).click();
+    await driver.findElement({ id: 'openWindowBtn' }).click();
+    await driver.findElement({ id: 'openWindowBtn' }).click();
+    await driver.findElement({ id: 'openWindowBtn' }).click();
+    await driver.findElement({ id: 'openWindowBtn' }).click();
+    await driver.findElement({ id: 'openWindowBtn' }).click();
+    await driver.findElement({ id: 'openWindowBtn' }).click();
+    await driver.findElement({ id: 'openWindowBtn' }).click();
+    await driver.findElement({ id: 'openWindowBtn' }).click();    
   });
 });
